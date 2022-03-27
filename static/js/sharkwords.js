@@ -15,18 +15,28 @@ const WORDS = [
   'chocolate',
 ];
 
-const numWrong = 0;
-
+let numWrong = 0;
+// let buttonEl = 'a';
 // Loop over the chars in `word` and create divs.
 // The divs should be appended to the section with id="word-container".
 const createDivsForChars = (word) => {
-  // Replace this with your code
+  
+  for (const char of word){
+    document.querySelector("#word-container").insertAdjacentHTML('beforeEnd',
+      `<div class="letter-box ${char}"></div>`)
+  } 
 };
 
 // Loop over each letter in the alphabet and generate a button for each letter
 // The buttons should be appended to the section with id="letter-buttons"
 const generateLetterButtons = () => {
-  // Replace this with your code
+  
+
+  for (letter of ALPHABET){
+    document.querySelector("#letter-buttons").insertAdjacentHTML('beforeEnd',
+    `<button>${letter}</button>`)
+
+  }
 };
 
 // Set the `disabled` property of `buttonEl` to `true.
@@ -34,17 +44,40 @@ const generateLetterButtons = () => {
 // `buttonEl` is an `HTMLElement` object.
 //
 const disableLetterButton = (buttonEl) => {
-  // Replace this with your code
+  buttonEl.disabled = true;
+
 };
+
 
 // This is a helper function we will use in the future
 // It should return `true` if `letter` is in the word
 // For now, you should test it out to make sure it works
 
+// const isLetterInWord = (letter) => {
+//   const searchString = document.querySelectorAll('word');
+//   console.log(searchString)
+  
+//   for (const letter of searchString){
+//     if (searchString.prototype.indexOf(letter) == -1);{
+//       return true;
+//     }
+//     else;{
+//     return false;
+//     }
+//     }
+//   }
+
+
+
 const isLetterInWord = (letter) => {
-  // Replace this with your code
+  return document.querySelector(`div.${letter}`) !== null;
 };
 
+// String.prototype.indexOf()
+// >> const firstSection = document.querySelectorAll('section');
+// >> console.log(section);
+// >> const table = document.querySelectorAll('table')
+// >> console.log(table);
 // This is like if __name__ == '__main__' in Python
 // It will be called when the file is run (because
 // we call the function on line 66)
@@ -56,11 +89,12 @@ const isLetterInWord = (letter) => {
   const word = 'hello';
 
   // call the function that makes an empty line for each letter in the word
-  // Replace this line with the function call
+  createDivsForChars(word)
 
   // call the function that makes a button for each letter in the alphabet
-  // Replace this line with the function call
+  generateLetterButtons()
 
+  disableLetterButton(buttonEl)
   // in the next lab, you will be adding functionality to handle when
   // someone clicks on a letter
 })();
